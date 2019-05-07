@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  MovieCatalog
+//  MovieViewer
 //
-//  Created by Prajakta Kulkarni on 07/05/2019.
+//  Created by Prajakta Kulkarni on 06/05/2019.
 //  Copyright © 2019 Prajakta Kulkarni. All rights reserved.
 //
 

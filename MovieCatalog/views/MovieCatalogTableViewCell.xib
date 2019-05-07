@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="KGk-i7-Jjw" customClass="MovieCatalogTableViewCell" customModule="MovieViewer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pae-Wu-AQ1">
+                        <rect key="frame" x="0.0" y="0.0" width="120" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="5Tv-h4-sgb"/>
+                            <constraint firstAttribute="height" constant="100" id="IrF-NT-8FB"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Teenage Mutant Ninja turtles: out of the shadows" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LGe-05-2fs">
+                        <rect key="frame" x="128" y="0.0" width="184" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="BdC-F2-ZC9"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="pae-Wu-AQ1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="6ZA-OO-QH3"/>
+                    <constraint firstAttribute="trailing" secondItem="LGe-05-2fs" secondAttribute="trailing" constant="8" id="Gan-I9-ndg"/>
+                    <constraint firstItem="LGe-05-2fs" firstAttribute="leading" secondItem="pae-Wu-AQ1" secondAttribute="trailing" constant="8" id="Gcy-gF-Fby"/>
+                    <constraint firstItem="pae-Wu-AQ1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="LQe-GU-cli"/>
+                    <constraint firstItem="LGe-05-2fs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="rsK-xr-D11"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="92.753623188405811" y="30.803571428571427"/>
+        </tableViewCell>
+    </objects>
+</document>
