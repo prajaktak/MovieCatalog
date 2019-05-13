@@ -13,7 +13,7 @@ class WebserviceManager: NSObject, URLSessionDelegate {
         case success(Value)
         case failure(Error)
     }
-    func getData(form path: String, completion: ((Result<[[String: AnyObject]]>) -> Void)?) {
+    func getData(form path: String, completion: ((Result<Data>) -> Void)?) {
         var request = URLRequest(url: URL(string: path)!)
         request.httpMethod = "GET"
         let config = URLSessionConfiguration.default
@@ -24,15 +24,8 @@ class WebserviceManager: NSObject, URLSessionDelegate {
                     completion?(.failure(error))
                 } else if let jsonData = responseData {
                     do {
-                        // swiftlint:disable line_length
-                        if let productsArray = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as? [[String: AnyObject]] {
-                        // swiftlint:enable line_length
-                            print(productsArray)
-                            completion?(.success(productsArray))
+                            completion?(.success(jsonData))
                         }
-                    } catch {
-                        completion?(.failure(error))
-                    }
                 } else {
                     let error = NSError(domain: "", code: 0,
                                         userInfo: [NSLocalizedDescriptionKey: "Data was not retrived"]) as Error
@@ -41,30 +34,5 @@ class WebserviceManager: NSObject, URLSessionDelegate {
             }
         }
         task.resume()
-    }
-    func urlSession(_ session: URLSession,
-                    didReceive challenge: URLAuthenticationChallenge,
-                    completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        let serverTrust = challenge.protectionSpace.serverTrust
-        let certificate =  SecTrustGetCertificateAtIndex(serverTrust!, 0)
-        //set ssl polocies for domain name check
-        let policies = NSMutableArray()
-        policies.add(SecPolicyCreateSSL(true, challenge.protectionSpace.host as CFString))
-        SecTrustSetPolicies(serverTrust!, policies)
-        //evaluate server certifiacte
-        var result: SecTrustResultType =  SecTrustResultType(rawValue: 0)!
-        SecTrustEvaluate(serverTrust!, &result)
-        let isServerTRusted: Bool =  (result == SecTrustResultType.unspecified || result == SecTrustResultType.proceed)
-        //get Local and Remote certificate Data
-        let remoteCertificateData: NSData =  SecCertificateCopyData(certificate!)
-        let pathToCertificate = Bundle.main.path(forResource: "githubusercontent.com", ofType: "cer")
-        let localCertificateData: NSData = NSData(contentsOfFile: pathToCertificate!)!
-        //Compare certificates
-        if isServerTRusted && remoteCertificateData.isEqual(to: localCertificateData as Data) {
-            let credential: URLCredential =  URLCredential(trust: serverTrust!)
-            completionHandler(.useCredential, credential)
-        } else {
-            completionHandler(.cancelAuthenticationChallenge, nil)
-        }
     }
 }
